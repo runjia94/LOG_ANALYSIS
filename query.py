@@ -1,5 +1,8 @@
 
-'''
+'''FOCUS: THIS IS THE SCRIPT FOR SOLVING PROBLEMS, NOT SOLUTION!
+
+
+
 what the most popular articles of all time 
               title               | views  
 ----------------------------------+--------
@@ -31,6 +34,9 @@ limit 3;
  elect authors.name, count(*) as views from authors join articles on articles.author = authors.id joisn log on log.path = '/article/' || articles.slug where log.status like '200%' group by authors.name order by views desc;
  '''
 
+ """
+ This is the question3  step by step
+
  select date_trunc('day',log.time) as day,count(*) as numbers from log group by day order by numbers desc;
  select date_trunc('day',log.time) as day,count(*) as numbers from log where log.status like '200%' group by day order by numbers desc;
 
@@ -56,24 +62,6 @@ AS result
 WHERE percent >= 1;
 
 
-
-
-SELECT day, perc FROM (
-    SELECT day, ROUND(
-
-        (SUM(requests)/(SELECT COUNT(*) FROM log
-                        WHERE time::date = day) * 100), 2)
-    AS perc FROM (
-        SELECT time::date AS day,
-            COUNT(*) AS requests
-        FROM log
-        WHERE status LIKE '%404%'
-        GROUP BY day)
-    AS log_percentage
-    GROUP BY day
-    ORDER BY perc DESC)
-AS result
-WHERE perc >= 1
 
 
 
