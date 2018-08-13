@@ -75,8 +75,9 @@ WHERE percent >= 1;"""
 
 * For detail in question3, you can see the file named query.py
 
+
 RUN METHOD
-___________
+----------
 
 After you run psql -d news -f newsdata.sql.
 Then run psql -d news. You will find the command line turns to news=>
