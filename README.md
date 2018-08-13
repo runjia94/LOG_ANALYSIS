@@ -80,10 +80,15 @@ RUN METHOD
 ----------
 
 After you run psql -d news -f newsdata.sql.
-Then run psql -d news. You will find the command line turns to news=>
-it means you have connected to this database.
+
+Then run psql -d news. You will find the command line turns to 'news=>'
+
+It means you have connected to this database.
+
 Then you can try query sentence in the query.py
 
 You should use control D to quit this database.
+
 Then run 'python log_analysis.py', of course , without quotation mark.
+
 Then you will get a output.txt file. The result is in this file.
