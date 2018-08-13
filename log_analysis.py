@@ -1,4 +1,5 @@
 import psycopg2
+from datetime import datetime
 
 DBNAME = 'news'
 
@@ -7,7 +8,6 @@ def queryOperate(query):
 	try:
 		db = psycopg2.connect(database = DBNAME)
 	except psycopg2.OperationalError as e:
-		#Exception raised for errors that are related to the database’s operation and not necessarily under the control of the programmer
 		print "there is an error when connect to database"+ DBNAME
 		print e
 
@@ -68,9 +68,17 @@ if __name__ == '__main__':
 	errorcount = errorLimit()
 
 	with open('output.txt','w') as f:
-		q1 = 'what are the most popular three articles of all time?'
+		q1 = '1. what are the most popular three articles of all time?\n'
 		f.write(q1)
-		f.write(topArticles)
+		for item in topArticles:
+			f.write(item[0] + ' --'+str(item[1]) + ' views \n')
+		f.write('\n2. What are the most popular article authors of all time \n')
+		for name in authorsRank:
+			f.write(name[0]+' --' +str(name[1])+' views \n')
+		f.write('\n3. On which days did more than 1% of requests lead to errors?\n')
+		for error in errorcount:
+			changetime = datetime.strptime(str(error[0]), '%Y-%m-%d').strftime('%B %d, %Y')
+			f.write(changetime +' --'+ str(error[1])+'% errors')
 
 
 
